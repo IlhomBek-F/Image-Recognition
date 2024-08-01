@@ -5,7 +5,7 @@ interface ImageContextValue {
     setImage: (image: string) => void;
 }
 
-export const ImageContext: Context<ImageContextValue> = createContext({} as ImageContextValue)
+export const ImageContext: Context<ImageContextValue> = createContext({image: '', setImage: (_: string) => {}})
 
 const ImageProvider = ({ children }: {children: ReactNode}) => {
     const [image, setImage] = useState('');
