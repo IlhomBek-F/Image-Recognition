@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 import Content from './components/Content'
 import DefaultPrompt from './components/DefaultPromt'
 import ImagePrompt from './components/ImagePrompt'
@@ -7,6 +6,7 @@ import UploadImage from './components/UploadIMage'
 import { useImage } from './context/imageContenx'
 import { run } from './server'
 import { message } from 'antd'
+import './App.css'
 
 function App() {
   const {image} = useImage();
