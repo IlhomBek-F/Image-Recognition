@@ -22,7 +22,7 @@ function App() {
       setContent({...content, loading: true})
       run(image, prompt)
         .then((resAI) => {
-             setContent({loading: false, content: resAI, prompt: ''})
+          setContent({loading: false, content: resAI, prompt})
         }).catch((error) => {
           errorAlert(error);
           setContent({...content, loading: false})

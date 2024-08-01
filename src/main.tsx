@@ -7,7 +7,7 @@ import { ImageProvider } from './context/imageContenx.tsx'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ImageProvider>
-    <App />
+       <App />
     </ImageProvider>
   </React.StrictMode>,
 )
