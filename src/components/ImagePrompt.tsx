@@ -1,5 +1,5 @@
 import { Button, Input, Space } from "antd";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 function ImagePrompt({handleAIRequest, content, loading}: {handleAIRequest: (text: any) => void; content: string, loading: boolean}) {
     const [prompt, setPrompt] = useState<string>('');

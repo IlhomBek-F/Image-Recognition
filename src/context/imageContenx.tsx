@@ -1,11 +1,11 @@
-import React, { Context, createContext, ReactNode, useContext, useState } from "react";
+import { Context, createContext, ReactNode, useContext, useState } from "react";
 
 interface ImageContextValue {
     image: string,
     setImage: (image: string) => void;
 }
 
-export const ImageContext: Context<ImageContextValue> = createContext({image: '', setImage: (image: string) => {}})
+export const ImageContext: Context<ImageContextValue> = createContext({} as ImageContextValue)
 
 const ImageProvider = ({ children }: {children: ReactNode}) => {
     const [image, setImage] = useState('');
