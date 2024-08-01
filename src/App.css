@@ -2,6 +2,38 @@
     width: 500px;
 }
 
+.title {
+    font-family: sans-serif;
+    font-size: 26px;
+    color: transparent;
+    background: linear-gradient(to right, #6644c5, #ce8a2c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: pulse 2s infinite, typing 4.5s steps(40, end);
+}
+
+@keyframes typing {
+    from {
+      width: 0
+    }
+  
+    to {
+      width: 100%
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+      background-size: 100%;
+    }
+  
+    50% {
+      background-size: 150%;
+    }
+}
 .ant-card {
     height: 350px;
 }
@@ -39,8 +71,9 @@
 
 .content {
        font-family: sans-serif;
-       line-height: 23px;
+       line-height: 35px;
        padding: 10px 5px;
        border-radius: 5px;
        background: #fff;
+       white-space: pre-line;
 }

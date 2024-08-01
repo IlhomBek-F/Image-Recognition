@@ -3,7 +3,6 @@ import { Card, Flex, Space, Upload, UploadProps } from "antd";
 import { useImage } from "../context/imageContenx";
 import { beforeUpload, FileType, getBase64 } from "../helper";
 
-
 function UploadImage() {
     const {image, setImage} = useImage();
   

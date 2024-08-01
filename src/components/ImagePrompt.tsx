@@ -1,13 +1,17 @@
 import { Button, Input, Space } from "antd";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-function ImagePrompt({handleAIRequest}: {handleAIRequest: (text: any) => void;}) {
-    const ref = useRef(null);
+function ImagePrompt({handleAIRequest, content, loading}: {handleAIRequest: (text: any) => void; content: string, loading: boolean}) {
+    const [prompt, setPrompt] = useState<string>('');
+
+    useEffect(() => {
+      setPrompt(content)
+    }, [content])
 
     return (
     <Space.Compact style={{ width: '100%', marginBottom: '10px' }}>
-      <Input ref={ref} placeholder="Enter a prompt here..." />
-      <Button type="primary" onClick={() => handleAIRequest((ref.current as any).input.value)}>Go</Button>
+      <Input  placeholder="Enter a prompt here..." value={prompt} onChange={(e) => setPrompt(e.target.value)}/>
+      <Button type="primary" disabled={loading} onClick={() => handleAIRequest(prompt)}>Go</Button>
     </Space.Compact>
     )
 }

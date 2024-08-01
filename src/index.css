@@ -1,6 +1,17 @@
 body {
     display: flex;
     justify-content: center;
-    background-color: rgb(202, 214, 217);
+    background: linear-gradient(to right, rgba(188, 118, 242, 0.424),  rgba(64, 0, 255, 0.605));
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+      background-size: 100%;
+    }
+  
+    50% {
+      background-size: 150%;
+    }
 }
 
