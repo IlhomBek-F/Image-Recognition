@@ -1,11 +1,12 @@
+import React from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Card, Flex, Space, Upload, UploadProps } from "antd";
-import { useImage } from "../context/imageContenx";
 import { beforeUpload, FileType, getBase64 } from "../helper";
+import { useImage } from "../context/imageContenx";
 
 function UploadImage() {
     const {image, setImage} = useImage();
-  
+
     const handleChange: UploadProps['onChange'] = (info) => {
         getBase64(info.file.originFileObj as FileType, (url: string) => {
           setImage(url.split(',')[1])
@@ -38,4 +39,4 @@ function UploadImage() {
     )
 }
 
-export default UploadImage
+export default React.memo(UploadImage)

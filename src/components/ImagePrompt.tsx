@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 function ImagePrompt({handleAIRequest, content, loading}: {handleAIRequest: (text: any) => void; content: string, loading: boolean}) {
     const [prompt, setPrompt] = useState<string>('');
-
     useEffect(() => {
       setPrompt(content)
     }, [content])

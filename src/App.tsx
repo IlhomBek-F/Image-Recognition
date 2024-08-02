@@ -1,21 +1,21 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import Content from './components/Content'
 import DefaultPrompt from './components/DefaultPromt'
 import ImagePrompt from './components/ImagePrompt'
 import UploadImage from './components/UploadIMage'
 import { useImage } from './context/imageContenx'
 import { run } from './server'
-import { message } from 'antd'
+import { useAlert } from './hooks/useAlert'
 import './App.css'
 
 function App() {
   const {image} = useImage();
+  const {contextHolder, errorAlert, infoAlert} = useAlert();
   const [content, setContent] = useState({loading: false, content: '', prompt: ''});
-  const [messageApi, contextHolder] = message.useMessage();
-
+  
   const handleAIRequest = (prompt: string = '') => {
       if(!image || !prompt) {
-        infoAlert();
+        infoAlert(image);
         return;
       }
 
@@ -23,29 +23,15 @@ function App() {
       run(image, prompt)
         .then((resAI) => {
           setContent({loading: false, content: resAI, prompt})
-        }).catch((error) => {
-          errorAlert(error);
+        }).catch(() => {
+          errorAlert();
           setContent({...content, loading: false})
         })
    }
 
-   const handleDefaultPrompt = (prompt: string) => {
-      setContent({...content, prompt})
-   }
-
-   const infoAlert = () => {
-     messageApi.open({
-      type: 'info',
-      content: !image ? 'Please upload your image' : 'Please enter your prompt',
-     });
-  };
-
-  const errorAlert = (error: Error) => {
-    messageApi.open({
-      type: 'error',
-      content: error.message
-     });
-  }
+   const handleDefaultPrompt = useCallback((prompt: string) => {
+      setContent((prev) => ({...prev, prompt}))
+   }, [])
    
   return (
     <div className='container'>

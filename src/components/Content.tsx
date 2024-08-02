@@ -1,9 +1,12 @@
 import { Skeleton } from "antd"
+import React, { useMemo } from "react";
 
 function Content({content}: {content: {loading: boolean, content: string}}) {
+  const memoized = useMemo(() => transformContent(content.content), [content.content]);
+
     return (
         <div className="content">
-            {content.loading ? <Skeleton loading={true} active/> : transformContent(content.content)}
+            {content.loading ? <Skeleton loading={true} active/> : memoized}
         </div>
     )
 }
@@ -32,4 +35,4 @@ function transformContent(text: string) {
     ));
   }
 
-export default Content
+export default React.memo(Content)

@@ -1,8 +1,8 @@
 import { Divider, Flex, Tag } from "antd";
+import React from "react";
 
 function DefaultPrompt({handleDefaultPrompt}: {handleDefaultPrompt: (prompt: string) => void}) {
     const  prompts = ['Describe the image in detail.', 'What objects are in this image?', 'What is the main subject of this image?'];
-
     return (
     <>
         <Divider orientation="left">Prompts</Divider>
@@ -15,4 +15,4 @@ function DefaultPrompt({handleDefaultPrompt}: {handleDefaultPrompt: (prompt: str
     )
 }
 
-export default DefaultPrompt;
+export default React.memo(DefaultPrompt)
