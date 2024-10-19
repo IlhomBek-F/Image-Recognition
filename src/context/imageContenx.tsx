@@ -1,6 +1,6 @@
 import { Context, createContext, ReactNode, useContext, useState } from "react";
 
-interface ImageContextValue {
+type ImageContextValue  = {
     image: string,
     setImage: (image: string) => void;
 }
